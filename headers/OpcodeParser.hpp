@@ -8,10 +8,10 @@ namespace advent
     {
         public:
             OpcodeParser();
-            int execute_file(std::string input_file_path, int desired_location = -1);
+            std::vector<int> parse_program_file(std::string input_file_path);
             ~OpcodeParser();
         private:
-            std::vector<int> parse_program_file(std::string input_file_path);
+            
     };
 };
 #endif

@@ -2,8 +2,10 @@
 #include <string>
 #include <getopt.h>
 #include <stdlib.h>
+#include <vector>
 #include "headers/RocketFuelCalculator.hpp"
 #include "headers/OpcodeParser.hpp"
+#include "headers/IntCodeMachine.hpp"
 
 std::string file_path = "";
 int test_num = -1;
@@ -14,7 +16,9 @@ void print_help()
     std::cout <<
             "advent of code 2019:\n" <<
             "Arguments:\n" <<
-            "-f <fname>: File to Read\n";
+            "-f <fname>: File to Read\n"<<
+            "-t: <number>: a number to test the fuel calculation"<<
+            "-o <fname>: Input file for the opcode machine\n";
     exit(EXIT_FAILURE);
 }
 
@@ -69,7 +73,9 @@ int main(int argc, char** argv)
     else if(opcode_mode)
     {
         advent::OpcodeParser parser;
-        parser.execute_file(file_path);
+        std::vector<int> program = parser.parse_program_file(file_path);
+        advent::IntCodeMachine codeMachine(program);
+        codeMachine.run();
     }
     else
     {

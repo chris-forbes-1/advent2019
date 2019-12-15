@@ -10,12 +10,6 @@ namespace advent
         //noop
     }
 
-    int OpcodeParser::execute_file(std::string input_file_path, int desired_location)
-    {
-        std::vector<int> program_input = parse_program_file(input_file_path);
-        return 0;        
-    }
-
     std::vector<int> OpcodeParser::parse_program_file(std::string input_file_path)
     {
         std::vector<int> parsed_program;
@@ -36,10 +30,6 @@ namespace advent
             }
         }
         input.close();
-        for(auto &c : parsed_program)
-        {
-            std::cout << c << std::endl;
-        }
         return parsed_program;
     }
 

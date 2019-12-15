@@ -12,7 +12,7 @@ namespace advent
     {
         private:
             std::vector<Module> modules;
-            std::function<int(int)> fuel_calculation = [=](int a)->int{return (floor(a)/3)-2;};
+            std::function<int(int)> fuel_calculation = [=](int a)->int{return (floor(a/3))-2;};
         public:
             RocketFuelCalculator();
             void load_file(std::string input_file);
